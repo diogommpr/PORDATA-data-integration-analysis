@@ -13,10 +13,17 @@ to extract insights from the combined data.
 The data used in this project were obtained from publicly available datasets
 provided by INE.
 
-Examples of datasets used:
-- Dataset A: brief description (INE link)
-- Dataset B: brief description (INE link)
-- Dataset C: brief description (INE link)
+The following datasets were used: [TUDO POR MUNICIPIO]
+- Resident population by sex and age group (INE link)
+- Crude mortality rate (INE link)
+- Infant mortality rate (INE link)
+- Crude birth rate (INE link)
+- Unemployment by age group (INE link)
+- Average monthly income (INE link)
+- Number of pharmacies (INE link)
+- Crimes by category (INE link)
+- Crude nuptiality rate (INE link)
+- Crude divorce rate (INE link)
 
 ## Methodology
 The project followed these main steps:
