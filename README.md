@@ -1,6 +1,6 @@
 # PORDATA Data Integration and Analysis
 
-## Overview
+## 1. Overview
 This project was developed to practice data cleaning, integration, and exploratory data 
 analysis using public datasets from PORDATA, Base de Dados de Portugal Contemporâneo. 
 
@@ -10,7 +10,7 @@ datasets, clean and harmonize them, merge them into a single unified dataset, an
 exploratory analyses to extract insights at the municipal level.
 
 
-## Data Sources
+## 2. Data Sources
 The datasets were obtained from publicly available PORDATA databases. 
 
 The following datasets were used: 
@@ -25,10 +25,10 @@ The following datasets were used:
 - Crude nuptiality rate
 - Crude divorce rate
 
-> **Note:** Due to GitHub's file size limitaitons, the resident population dataset
+> **Note:** Due to GitHub's file size limitations, the resident population dataset
 (population_by_age_sex.csv) contains only data from 2006 onwards.
 
-## Generated Datasets
+## 3. Generated Datasets
 -----------------
 
 As part of this project, four final datasets were created from the cleaned and merged raw data:
@@ -39,15 +39,15 @@ As part of this project, four final datasets were created from the cleaned and m
 4. **2024-specific detailed dataset (multiple rows per crime type)**: subset for the year 2024, with multiple rows per municipality depending on the crime type.
 
 These datasets are saved in the `data/processed/` folder and were used for all analyses presented in this project.
-The statistical analyses were run on the dataset number 3 (2024-specific dataset).
+The statistical analyses were run on the **2024-specific dataset (one row per municipality)**.
 
-## Methodology
+## 4. Methodology
 The project followed these main steps:
 
-### 4.1. **Download of Raw Datasets
+### 4.1. Download of Raw Datasets
 - CSV datasets from PORDATA
 
-### 4.2 ** Import Libraries
+### 4.2 Import Libraries
 - `pandas`, `numpy`, `re`, `unidecode`
 - Standard Python data science libraries
   
@@ -90,14 +90,28 @@ The project followed these main steps:
    - Salary quartile analysis and ANOVA tests.
    - Correlation analysis between variables.
 
-## Tools and Technologies
+## 5. Key Design Choices
+
+- Municipality-level analysis was chosen to ensure comparability across datasets and years.
+- When datasets included multiple breakdowns (e.g., age, sex, crime category), total values were retained to avoid double counting and simplify integration.
+- Crime data were preserved in both aggregated and detailed formats to support different analytical perspectives.
+- 2024 analyses were performed on a simplified dataset (one row per municipality) to ensure statistical independence.
+
+## 6. Key Findings 
+
+- Significant variation exists across municipalities in income, unemployment, and crime rates.
+- Income levels show meaningful associations with several social indicators.
+- Normalizing variables by population size was essential to avoid misleading comparisons between municipalities.
+
+
+## 7. Tools and Technologies
 - Python
 - pandas, numpy
 - Jupyter Notebook
 - matplotlib / seaborn
 - scipy
 
-## Repository Structure
+## 8. Repository Structure
 ```
 data/
   raw/         # Original CSVs downloaded from PORDATA
@@ -108,15 +122,10 @@ notebooks/
 README.md
 ```
 
-## How to Reproduce
+## 9. How to Reproduce
 1. Clone the repository.
 2. Open `01_data_cleaning.ipynb` and run all cells:
    - Cleaned datasets will be saved in `data/processed/`.
 3. Open `02_analysis.ipynb` and run all cells:
    - Analyses and plots will be generated from the processed CSVs.
 4. All paths are **relative**, so the notebooks can be run from any machine without changing absolute paths.
-
-## Notes
-- Column names have been standardized in English using snake_case.
-- Some datasets were filtered to totals per municipality for consistency.
-- The population dataset is partial due to file size restrictions.
