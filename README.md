@@ -1,14 +1,14 @@
 # PORDATA Data Integration and Analysis
 
 ## Overview
-This project was developed as a self-initiated initiative to practice data cleaning,
-integration, and exploratory data analysis using public datasets from PORDATA, Base 
-de Dados de Portugal Contemporâneo. The idea was to apply the data wrangling techniques 
-learned from *Wes McKinney's "Python for Data Analysis"* in a practical project.
+This project was developed to practice data cleaning, integration, and exploratory data 
+analysis using public datasets from PORDATA, Base de Dados de Portugal Contemporâneo. 
 
-The main goal was to download multiple datasets, clean and harmonize them,
-merge them into a single unified dataset, and perform exploratory analyses
-to extract insights at the municipal level.
+The main goal was to apply the data wrangling techniques learned from *Wes McKinney's 
+"Python for Data Analysis"*. To that end, I performed the following steps: download multiple 
+datasets, clean and harmonize them, merge them into a single unified dataset, and perform 
+exploratory analyses to extract insights at the municipal level.
+
 
 ## Data Sources
 The datasets were obtained from publicly available PORDATA databases. 
@@ -33,26 +33,58 @@ The following datasets were used:
 
 As part of this project, four final datasets were created from the cleaned and merged raw data:
 
-1. **Merged dataset (all years, one row per municipality)** – contains a single row for each municipality, aggregating all variables.
-2. **Merged detailed dataset (all years, multiple rows per crime type)** – contains multiple rows per municipality, separated by type of crime.
-3. **2024-specific dataset (one row per municipality)** – subset for the year 2024, with one row per municipality.
-4. **2024-specific detailed dataset (multiple rows per crime type)** – subset for the year 2024, with multiple rows per municipality depending on the crime type.
+1. **Merged dataset (all years, one row per municipality)**: contains a single row for each municipality, aggregating all variables.
+2. **Merged detailed dataset (all years, multiple rows per crime type)**: contains multiple rows per municipality, separated by type of crime.
+3. **2024-specific dataset (one row per municipality)**: subset for the year 2024, with one row per municipality.
+4. **2024-specific detailed dataset (multiple rows per crime type)**: subset for the year 2024, with multiple rows per municipality depending on the crime type.
 
 These datasets are saved in the `data/processed/` folder and were used for all analyses presented in this project.
+The statistical analyses were run on the dataset number 3 (2024-specific dataset).
 
 ## Methodology
 The project followed these main steps:
 
-1. **Download and inspection** of all raw datasets.
-2. **Data cleaning**:
-   - Standardization of column names (English, removal of leading/trailing spaces, etc.).
-   - Harmonization of categorical variables.
-   - Removal of unnecessary columns.
-3. **Dataset integration**:
-   - Filtered datasets to ensure one value per municipality.
-   - Created derived datasets such as total crimes per municipality.
-   - Merged all datasets into a single “long” and “detailed” dataset.
-4. **Exploratory data analysis**:
+### 4.1. **Download of Raw Datasets
+- CSV datasets from PORDATA
+
+### 4.2 ** Import Libraries
+- `pandas`, `numpy`, `re`, `unidecode`
+- Standard Python data science libraries
+  
+### 4.3 Load Data
+- Each CSV from PORDATA is loaded into a separate DataFrame
+
+### 4.4 Data Cleaning
+- Standardize column names: Portuguese to English, removal of leading/trailing spaces and accents, etc.)
+- Drop unnecessary columns
+- Rename columns to descriptive names: e.g., “Valor” to “Population”, “Deaths_per_1000”, etc.)
+- Normalize categorical values 
+- Filter only Municipality-level rows: “Level” = “Municipality”
+- Handle datasets with multiple breakdowns by keeping total values only:
+  - Population: totals across age and sex.
+  - Unemployment: total unemployed population.
+- Crime data were treated in two ways:
+  - An aggregated version with total crimes per municipality and year.
+  - A detailed version retaining multiple rows per crime type.
+
+### 4.5 Missing Data Imputation
+- Some datasets lack values for 2024
+- Values from 2023 were carried to 2024
+
+### 4.6 Merge Datasets
+- Main merge (“merged_df”): one row per Municipality per Year
+- Detailed merge (“merged_detailed_df”: keeps multiple rows per “Crime_type”
+- Merge keys: “Year” and “Municipality”
+- Check for missing values
+
+### 4.7 Export Cleaned/Merged Data
+- CSVs saved to “data/processed”:
+    - “merged_dataset.csv” → standard consolidated dataset
+    - “merged_dataset_detailed.csv” → detailed dataset (multiple rows per crime type)
+    - “municipal_data_2024.csv” → 2024 only, one row per municipality
+    - “municipal_data_2024_detailed.csv” → 2024 only, detailed crime rows
+
+### 4.8 **Exploratory data analysis**:
    - Top/bottom municipalities by key variables.
    - Normalized rates (per 1,000 inhabitants, etc.).
    - Salary quartile analysis and ANOVA tests.
@@ -78,7 +110,7 @@ README.md
 
 ## How to Reproduce
 1. Clone the repository.
-2. Open `01_data_cleaning.ipynb` and run all cells (Kernel → Restart & Run All):
+2. Open `01_data_cleaning.ipynb` and run all cells:
    - Cleaned datasets will be saved in `data/processed/`.
 3. Open `02_analysis.ipynb` and run all cells:
    - Analyses and plots will be generated from the processed CSVs.
