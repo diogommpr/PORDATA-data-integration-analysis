@@ -3,7 +3,8 @@
 ## Overview
 This project was developed as a self-initiated initiative to practice data cleaning,
 integration, and exploratory data analysis using public datasets from PORDATA, Base 
-de Dados de Portugal Contemporâneo.
+de Dados de Portugal Contemporâneo. The idea was to apply the data wrangling techniques 
+learned from *Wes McKinney's "Python for Data Analysis"* in a practical project.
 
 The main goal was to download multiple datasets, clean and harmonize them,
 merge them into a single unified dataset, and perform exploratory analyses
