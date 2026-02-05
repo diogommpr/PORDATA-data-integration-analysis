@@ -23,7 +23,8 @@ The following datasets were used:
 - Crimes by category 
 - Crude nuptiality rate
 - Crude divorce rate
-Note: Due to GitHub's file size limitaitons, the resident population dataset
+
+**Note:** Due to GitHub's file size limitaitons, the resident population dataset
 (population_by_age_sex.csv) contains only data from 2006 onwards.
 
 ## Methodology
