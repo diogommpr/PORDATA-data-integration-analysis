@@ -27,6 +27,18 @@ The following datasets were used:
 > **Note:** Due to GitHub's file size limitaitons, the resident population dataset
 (population_by_age_sex.csv) contains only data from 2006 onwards.
 
+## Generated Datasets
+-----------------
+
+As part of this project, four final datasets were created from the cleaned and merged raw data:
+
+1. **Merged dataset (all years, one row per municipality)** – contains a single row for each municipality, aggregating all variables.
+2. **Merged detailed dataset (all years, multiple rows per crime type)** – contains multiple rows per municipality, separated by type of crime.
+3. **2024-specific dataset (one row per municipality)** – subset for the year 2024, with one row per municipality.
+4. **2024-specific detailed dataset (multiple rows per crime type)** – subset for the year 2024, with multiple rows per municipality depending on the crime type.
+
+These datasets are saved in the `data/processed/` folder and were used for all analyses presented in this project.
+
 ## Methodology
 The project followed these main steps:
 
