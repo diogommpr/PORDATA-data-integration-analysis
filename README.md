@@ -11,7 +11,7 @@ exploratory analyses to extract insights at the municipal level.
 
 
 ## 2. Data Sources
-The datasets were obtained from publicly available PORDATA databases. 
+The datasets were obtained from publicly available PORDATA databases (https://www.pordata.pt/municipios). 
 
 The following datasets were used: 
 - Resident population by sex and age group 
@@ -30,7 +30,6 @@ The following datasets were used:
 
 ## 3. Generated Datasets
 -----------------
-
 As part of this project, four final datasets were created from the cleaned and merged raw data:
 
 1. **Merged dataset (all years, one row per municipality)**: contains a single row for each municipality, aggregating all variables.
@@ -38,8 +37,7 @@ As part of this project, four final datasets were created from the cleaned and m
 3. **2024-specific dataset (one row per municipality)**: subset for the year 2024, with one row per municipality.
 4. **2024-specific detailed dataset (multiple rows per crime type)**: subset for the year 2024, with multiple rows per municipality depending on the crime type.
 
-These datasets are saved in the `data/processed/` folder and were used for all analyses presented in this project.
-The statistical analyses were run on the **2024-specific dataset (one row per municipality)**.
+These datasets are saved in the `data/processed/` folder. The statistical analyses were run on the **2024-specific dataset (one row per municipality)**.
 
 ## 4. Methodology
 The project followed these main steps:
@@ -91,18 +89,15 @@ The project followed these main steps:
    - Correlation analysis between variables.
 
 ## 5. Key Design Choices
-
 - Municipality-level analysis was chosen to ensure comparability across datasets and years.
 - When datasets included multiple breakdowns (e.g., age, sex, crime category), total values were retained to avoid double counting and simplify integration.
 - Crime data were preserved in both aggregated and detailed formats to support different analytical perspectives.
 - 2024 analyses were performed on a simplified dataset (one row per municipality) to ensure statistical independence.
 
 ## 6. Key Findings 
-
 - Significant variation exists across municipalities in income, unemployment, and crime rates.
-- Income levels show meaningful associations with several social indicators.
 - Normalizing variables by population size was essential to avoid misleading comparisons between municipalities.
-
+- Income levels show meaningful associations with several social indicators.
 
 ## 7. Tools and Technologies
 - Python
@@ -128,4 +123,4 @@ README.md
    - Cleaned datasets will be saved in `data/processed/`.
 3. Open `02_analysis.ipynb` and run all cells:
    - Analyses and plots will be generated from the processed CSVs.
-4. All paths are **relative**, so the notebooks can be run from any machine without changing absolute paths.
+4. All paths are **relative**, so the notebooks can be run without changing absolute paths.
