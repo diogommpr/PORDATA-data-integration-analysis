@@ -5,9 +5,9 @@ This project was developed to practice data cleaning, integration, and explorato
 analysis using public datasets from PORDATA, Base de Dados de Portugal Contemporâneo. 
 
 The main goal was to apply the data wrangling techniques learned from *Wes McKinney's 
-"Python for Data Analysis"*. To that end, I performed the following steps: download multiple 
-datasets, clean and harmonize them, merge them into a single unified dataset, and perform 
-exploratory analyses to extract insights at the municipal level.
+"Python for Data Analysis"*. To that end, I performed the following steps: downloading multiple datasets, 
+cleaning and harmonizing them, merging them into a single unified dataset, and conducting exploratory 
+analyses to extract insights at the municipal level.
 
 
 ## 2. Data Sources
@@ -25,8 +25,10 @@ The following datasets were used:
 - Crude nuptiality rate
 - Crude divorce rate
 
-> **Note:** Due to GitHub's file size limitations, the resident population dataset
-(population_by_age_sex.csv) contains only data from 2006 onwards.
+> **Note:** Due to GitHub's file size limitations, the resident population dataset (population_by_age_sex.csv)
+> contains only data from 2006 onwards.Since this dataset is used as the basis for merging the consolidated datasets,
+> all of them are limited to the period 2006–2024. To obtain consolidated datasets with all available years, download
+> the full resident population dataset and replace the file currently provided in the /raw folder before running the pipeline.
 
 ## 3. Generated Datasets
 -----------------
@@ -46,7 +48,7 @@ The project followed these main steps:
 - CSV datasets from PORDATA
 
 ### 4.2 Import Libraries
-- `pandas`, `numpy`, `re`, `unidecode`
+- `pandas`, `re`, `unidecode`
 - Standard Python data science libraries
   
 ### 4.3 Load Data
@@ -90,21 +92,26 @@ The project followed these main steps:
 
 ## 5. Key Design Choices
 - Municipality-level analysis was chosen to ensure comparability across datasets and years.
-- When datasets included multiple breakdowns (e.g., age, sex, crime category), total values were retained to avoid double counting and simplify integration.
+- When datasets included multiple breakdowns (e.g., age, sex, crime category), total values were retained to simplify integration.
 - Crime data were preserved in both aggregated and detailed formats to support different analytical perspectives.
-- 2024 analyses were performed on a simplified dataset (one row per municipality) to ensure statistical independence.
+- Analyses were performed on the 2024 simplified dataset (one row per municipality) to use the most up-to-date data. 
 
 ## 6. Key Findings 
-- Significant variation exists across municipalities in income, unemployment, and crime rates.
+- Significant variation exists across municipalities in demographic, economic, and social indicators.
 - Normalizing variables by population size was essential to avoid misleading comparisons between municipalities.
-- Income levels show meaningful associations with several social indicators.
+- Statistically significant differences were observed across income quartiles for all analyzed variables; the highest-income quartile exhibited lower mortality rates and higher birth and divorce rates compared to other quartiles.
+- Moderate correlations were observed between
+  - Mortality rate and birth rate (r = -0.54)
+  - Mortality rate and divorce rate (r = -0.42)
+  - Mortality rate and number of pharmacies per 10,000 inhabitants (r = 0.56)
+  - Average income and birth rate (r = 0.40)
 
 ## 7. Tools and Technologies
 - Python
-- pandas, numpy
-- Jupyter Notebook
+- pandas
 - matplotlib / seaborn
 - scipy
+- Jupyter Notebook
 
 ## 8. Repository Structure
 ```
