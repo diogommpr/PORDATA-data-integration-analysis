@@ -26,7 +26,7 @@ The following datasets were used:
 - Crude divorce rate
 
 > **Note:** Due to GitHub's file size limitations, the resident population dataset (population_by_age_sex.csv)
-> contains only data from 2006 onwards.Since this dataset is used as the basis for merging the consolidated datasets,
+> contains only data from 2006 onwards. Since this dataset is used as the basis for merging the consolidated datasets,
 > all of them are limited to the period 2006–2024. To obtain consolidated datasets with all available years, download
 > the full resident population dataset and replace the file currently provided in the /raw folder before running the pipeline.
 
