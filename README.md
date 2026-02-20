@@ -110,7 +110,7 @@ The project followed these main steps:
 - Python
 - pandas
 - matplotlib / seaborn
-- scipy
+- sciPy
 - Jupyter Notebook
 
 ## 8. Repository Structure
