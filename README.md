@@ -4,10 +4,10 @@
 This project was developed to practice data cleaning, integration, and exploratory data 
 analysis using public datasets from PORDATA, Base de Dados de Portugal Contemporâneo. 
 
-The main goal was to apply the data wrangling techniques learned from *Wes McKinney's 
-"Python for Data Analysis"*. To that end, I performed the following steps: downloading multiple datasets, 
-cleaning and harmonizing them, merging them into a single unified dataset, and conducting exploratory 
-analyses to extract insights at the municipal level.
+The main goal was to apply the data wrangling techniques learned from "Python for Data Analysis, 
+Data Wrangling with pandas, NumPy & Jupyter"*, by *Wes McKinney. To that end, I performed the following steps: 
+downloading multiple datasets, cleaning and harmonizing them, merging them into a single unified dataset, and 
+conducting exploratory analyses to extract insights at the municipal level.
 
 
 ## 2. Data Sources
